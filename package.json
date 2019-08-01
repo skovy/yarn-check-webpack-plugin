@@ -5,5 +5,13 @@
   "main": "index.js",
   "repository": "https://github.com/skovy/yarn-check-integrity-webpack-plugin",
   "author": "Spencer Miskoviak <smiskoviak@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.16",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2"
+  }
 }
