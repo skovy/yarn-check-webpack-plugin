@@ -1,6 +1,6 @@
 import { resolve } from "path";
 
-import { run } from "../src/index";
+import { run } from "../src/yarn-check";
 import { log } from "../src/log";
 
 describe("simple", () => {

@@ -7,7 +7,8 @@
   "author": "Spencer Miskoviak <smiskoviak@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "dependencies": {
     "@types/node": "^12.6.8",

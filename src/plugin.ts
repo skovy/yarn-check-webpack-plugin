@@ -1,6 +1,6 @@
 import webpack from "webpack";
 
-import { run } from ".";
+import { run } from "./yarn-check";
 
 class YarnCheck implements webpack.Plugin {
   apply(compiler: webpack.Compiler) {
