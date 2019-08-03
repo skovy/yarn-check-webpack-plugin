@@ -1,0 +1,8 @@
+{
+  "name": "example",
+  "license": "MIT",
+  "dependencies": {
+    "@types/webpack": "^4.32.1",
+    "webpack": "^4.39.1"
+  }
+}
