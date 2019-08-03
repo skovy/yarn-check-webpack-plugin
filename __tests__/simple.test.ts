@@ -16,6 +16,7 @@ describe("simple", () => {
 
   afterEach(() => {
     warnSpy.mockRestore();
+    errorSpy.mockRestore();
   });
 
   it("lists missing packages, wrong versions and a prompt to install", async () => {
