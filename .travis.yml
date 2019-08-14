@@ -10,6 +10,7 @@ jobs:
       script:
         - yarn run check-types
         - yarn test
+        - yarn commitlint-travis
     - stage: release
       name: "Release on npm"
       deploy:
