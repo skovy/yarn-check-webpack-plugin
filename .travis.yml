@@ -9,7 +9,7 @@ jobs:
         - yarn run check-types
         - yarn test
     - stage: release
-      name: "Release on npm (if necessary)"
+      name: "Release on npm"
       deploy:
         provider: script
         skip_cleanup: true

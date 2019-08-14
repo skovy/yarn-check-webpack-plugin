@@ -6,7 +6,9 @@
   "repository": "https://github.com/skovy/yarn-check-integrity-webpack-plugin",
   "author": "Spencer Miskoviak <smiskoviak@gmail.com>",
   "license": "MIT",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "scripts": {
     "test": "jest --color",
     "build": "tsc",
@@ -19,13 +21,21 @@
     "typescript": "^3.5.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
     "@types/jest": "^24.0.16",
     "@types/memory-fs": "^0.3.2",
     "@types/webpack": "^4.32.1",
+    "husky": "^3.0.3",
     "jest": "^24.8.0",
     "memory-fs": "^0.4.1",
+    "semantic-release": "^15.13.21",
     "ts-jest": "^24.0.2",
-    "webpack": "^4.39.1",
-    "semantic-release": "^15.13.21"
+    "webpack": "^4.39.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
