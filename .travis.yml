@@ -1,13 +1,13 @@
 language: node_js
 node_js:
- - stable
+  - stable
 install:
- - yarn install
+  - yarn install
 script:
- - yarn run check-types
- - yarn test
- 
- jobs:
+  - yarn run check-types
+  - yarn test
+
+jobs:
   include:
     - stage: release
       node_js: lts/*
