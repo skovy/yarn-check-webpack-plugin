@@ -6,12 +6,3 @@ install:
 script:
   - yarn run check-types
   - yarn test
-
-jobs:
-  include:
-    - stage: release
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script:
-          - npx semantic-release
