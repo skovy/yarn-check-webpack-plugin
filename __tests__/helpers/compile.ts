@@ -6,8 +6,8 @@ export const compile = ({ plugins = [] }: Partial<Configuration> = {}) => {
   const config: Configuration = {
     mode: "development",
     devtool: false,
-    context: path.resolve(__dirname, "..", "fixtures"),
-    entry: `./simple.ts`,
+    context: path.resolve(__dirname, "..", "simple"),
+    entry: `./index.ts`,
     output: {
       path: path.resolve(__dirname, `../outputs/`),
       filename: "[name].bundle.js"

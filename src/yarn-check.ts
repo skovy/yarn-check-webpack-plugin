@@ -6,7 +6,7 @@ import { log } from "./log";
 const PACKAGE_NOT_INSTALLED = /\"(.*)\" not installed/;
 const PACKAGE_WRONG_VERSION = /\"(.*)\" is wrong version: expected \"(.*)\", got \"(.*)\"/;
 
-interface PluginOptions {
+export interface PluginOptions {
   /**
    * The root directory to run the commands. This should be the directory that
    * contains `package.json`, `yarn.lock` and `node_modules`. By default, it will
