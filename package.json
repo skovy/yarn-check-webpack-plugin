@@ -7,7 +7,7 @@
   "author": "Spencer Miskoviak <smiskoviak@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest --color",
     "build": "tsc",
     "check-types": "tsc --noEmit"
   },
