@@ -1,5 +1,7 @@
 # yarn-check-webpack-plugin
 
+[![Build Status](https://travis-ci.org/skovy/yarn-check-webpack-plugin.svg?branch=master)](https://travis-ci.org/skovy/yarn-check-webpack-plugin)
+
 When working in a large codebase it's likely someone else will add a new package
 or upgrade an existing package. This often leads to a convoluted webpack error
 or runtime error as a result of a missing or outdated package.
