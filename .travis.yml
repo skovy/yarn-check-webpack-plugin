@@ -1,16 +1,15 @@
 language: node_js
-
-node_js:
-  - 10
-  - 8
+node_js: stable
 
 jobs:
   include:
-    # Define the release stage that runs semantic-release
+    - stage: test
+      name: "Unit tests, type checking, linting, etc."
+      script:
+        - yarn run check-types
+        - yarn test
     - stage: release
-      node_js: lts/*
-      # Advanced: optionally overwrite your default `script` step to skip the tests
-      # script: skip
+      name: "Release on npm (if necessary)"
       deploy:
         provider: script
         skip_cleanup: true
