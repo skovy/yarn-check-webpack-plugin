@@ -1,6 +1,6 @@
 {
   "name": "yarn-check-integrity-webpack-plugin",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Verify there are no missing dependencies and the correct versions with webpack and yarn",
   "main": "index.js",
   "repository": "https://github.com/skovy/yarn-check-integrity-webpack-plugin",
@@ -9,7 +9,8 @@
   "scripts": {
     "test": "jest --color",
     "build": "tsc",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@types/node": "^12.6.8",
@@ -23,6 +24,7 @@
     "jest": "^24.8.0",
     "memory-fs": "^0.4.1",
     "ts-jest": "^24.0.2",
-    "webpack": "^4.39.1"
+    "webpack": "^4.39.1",
+    "semantic-release": "^15.13.21"
   }
 }
