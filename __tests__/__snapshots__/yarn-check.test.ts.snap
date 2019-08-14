@@ -1,10 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`yarn-check project with a missing package and wrong package lists missing packages, wrong versions and a prompt to install 1`] = `
+exports[`yarn-check a project that is up to date lists missing packages, wrong versions and a prompt to install 1`] = `"All packages installed and up to date."`;
+
+exports[`yarn-check a project that is up to date lists missing packages, wrong versions and a prompt to install 2`] = `""`;
+
+exports[`yarn-check a project that is up to date lists missing packages, wrong versions and a prompt to install 3`] = `""`;
+
+exports[`yarn-check a project with a missing package and wrong package lists missing packages, wrong versions and a prompt to install 1`] = `""`;
+
+exports[`yarn-check a project with a missing package and wrong package lists missing packages, wrong versions and a prompt to install 2`] = `
 "Missing packages:
   - underscore
 Wrong packages:
   - classnames (expected ^2.2.6 but got 3.2.6)"
 `;
 
-exports[`yarn-check project with a missing package and wrong package lists missing packages, wrong versions and a prompt to install 2`] = `"Please run [1m\`yarn install --check-files\`[22m to update."`;
+exports[`yarn-check a project with a missing package and wrong package lists missing packages, wrong versions and a prompt to install 3`] = `"Please run [1m\`yarn install --check-files\`[22m to update."`;
