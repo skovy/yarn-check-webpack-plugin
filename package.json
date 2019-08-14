@@ -13,6 +13,7 @@
     "test": "jest --color",
     "build": "tsc",
     "check-types": "tsc --noEmit",
+    "commit": "commit",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@commitlint/prompt-cli": "^8.1.0",
     "@commitlint/travis-cli": "^8.1.0",
     "@types/jest": "^24.0.16",
     "@types/memory-fs": "^0.3.2",
