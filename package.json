@@ -2,24 +2,25 @@
   "name": "yarn-check-webpack-plugin",
   "version": "0.0.0-development",
   "description": "Verify there are no missing dependencies and the correct versions with webpack and yarn",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/src/index.d.ts",
   "repository": "https://github.com/skovy/yarn-check-webpack-plugin",
   "author": "Spencer Miskoviak <smiskoviak@gmail.com>",
   "license": "MIT",
   "files": [
-    "src"
+    "dist/src/*.d.ts",
+    "dist/index.js"
   ],
   "scripts": {
     "test": "jest --color",
-    "build": "tsc",
+    "build": "rollup -c",
     "check-types": "tsc --noEmit",
     "commit": "commit",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepack": "yarn build"
   },
   "dependencies": {
-    "@types/node": "^12.6.8",
-    "chalk": "^2.4.2",
-    "typescript": "^3.5.3"
+    "chalk": "^2.4.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
@@ -28,12 +29,17 @@
     "@commitlint/travis-cli": "^8.1.0",
     "@types/jest": "^24.0.16",
     "@types/memory-fs": "^0.3.2",
+    "@types/node": "^12.7.2",
     "@types/webpack": "^4.32.1",
+    "builtin-modules": "^3.1.0",
     "husky": "^3.0.3",
     "jest": "^24.8.0",
     "memory-fs": "^0.4.1",
+    "rollup": "^1.19.4",
+    "rollup-plugin-typescript2": "^0.22.1",
     "semantic-release": "^15.13.21",
     "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3",
     "webpack": "^4.39.1"
   },
   "husky": {

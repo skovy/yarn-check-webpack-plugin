@@ -1,3 +1,14 @@
+# Ignore the root and example node_modules (but keep the test node_modules)
 /node_modules
 example/node_modules
+
+# Ignore any VSCode specific config
 .vscode
+
+# Ignore any built distribution
+/dist
+*.tgz
+/package
+
+# Ignore the rollup TypeScript plugin cache
+.rpt2_cache

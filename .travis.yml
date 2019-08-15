@@ -11,6 +11,7 @@ jobs:
         - yarn run check-types
         - yarn test
         - yarn commitlint-travis
+        - yarn build
     - stage: release
       name: "Release on npm"
       deploy:
