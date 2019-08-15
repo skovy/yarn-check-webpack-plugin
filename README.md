@@ -52,7 +52,7 @@ The output should include something that looks like:
 ```
 Missing packages:
   - lodash
-Please run `yarn install --check-files` to update.
+Please run `yarn install --check-files` to update.
 ```
 
 ## Configuration
