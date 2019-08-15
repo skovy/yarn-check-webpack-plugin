@@ -1,4 +1,4 @@
-import webpack from "webpack";
+import * as webpack from "webpack";
 
 import { run, PluginOptions } from "./yarn-check";
 
@@ -9,12 +9,14 @@ class YarnCheck implements webpack.Plugin {
     this.options = options;
   }
 
-  apply(compiler: webpack.Compiler) {
-    compiler.hooks.afterCompile.tapAsync("YarnCheck", async (_, callback) => {
-      await run(this.options);
-      callback();
-    });
-  }
+  public apply = (compiler: webpack.Compiler) => {
+    compiler.hooks.run.tap("YarnCheck", this.perform);
+    compiler.hooks.watchRun.tap("YarnCheck", this.perform);
+  };
+
+  private perform = async () => {
+    await run(this.options);
+  };
 }
 
 export { YarnCheck };
