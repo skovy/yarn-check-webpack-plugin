@@ -10,12 +10,16 @@ class YarnCheck implements webpack.Plugin {
   }
 
   public apply = (compiler: webpack.Compiler) => {
-    compiler.hooks.run.tap("YarnCheck", this.perform);
-    compiler.hooks.watchRun.tap("YarnCheck", this.perform);
+    compiler.hooks.run.tapAsync("YarnCheck", this.perform);
+    compiler.hooks.watchRun.tapAsync("YarnCheck", this.perform);
   };
 
-  private perform = async () => {
+  private perform = async (
+    _compiler: webpack.Compiler,
+    callback: () => void
+  ) => {
     await run(this.options);
+    callback();
   };
 }
 
