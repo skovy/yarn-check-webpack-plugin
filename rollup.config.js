@@ -10,7 +10,7 @@ const config = {
   input: "src/index.ts",
   output: {
     file: pkg.main,
-    format: "es"
+    format: "cjs"
   },
   external: EXTERNALS,
   // Necessary to avoid "(!) `this` has been rewritten to `undefined`"

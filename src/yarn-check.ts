@@ -91,6 +91,3 @@ export const run = async (options: PluginOptions = {}) => {
     `Please run ${chalk.bold(`\`yarn install --check-files\``)} to update.`
   );
 };
-
-// run()
-// run({ rootDirectory: "./__tests__/simple" });
