@@ -14,6 +14,7 @@
   "scripts": {
     "test": "jest --color",
     "build": "rollup -c",
+    "start": "rollup -c -w",
     "check-types": "tsc --noEmit",
     "commit": "commit",
     "semantic-release": "semantic-release",
