@@ -47,5 +47,10 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  }
+  },
+  "keywords": [
+    "webpack",
+    "yarn check",
+    "yarn verify tree"
+  ]
 }
