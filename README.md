@@ -62,7 +62,7 @@ All configuration is optional. Pass a configuration object when initializing to 
 For example:
 
 ```typescript
-new YarnCheck({ rootDirectory: "./another/directory" })
+new YarnCheck({ rootDirectory: "./another/directory", exclude: /underscore/ });
 ```
 
 ### `rootDirectory`
@@ -70,3 +70,9 @@ new YarnCheck({ rootDirectory: "./another/directory" })
 **Type**: String
 
 **Description**: The root directory to run the commands. This should be the directory that contains `package.json`, `yarn.lock` and `node_modules`. By default, it will run in the current directory. This option only needs to be set if this plugin is being run in a different directory.
+
+### `exclude`
+
+**Type**: RegExp
+
+**Description**: Ignore warnings for any missing or wrong version packages that match this regex expression.

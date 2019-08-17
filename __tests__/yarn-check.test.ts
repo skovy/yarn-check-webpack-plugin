@@ -39,4 +39,28 @@ describe("yarn-check", () => {
       expect(errorSpy.mock.calls.join("\n")).toMatchSnapshot();
     });
   });
+
+  describe("options", () => {
+    describe("exclude", () => {
+      it("does not warn about missing packages that are excluded", async () => {
+        await run({
+          rootDirectory: fixtures.missingAndWrongPackage,
+          exclude: /under/
+        });
+
+        expect(warnSpy.mock.calls.join("")).toContain("classnames");
+        expect(warnSpy.mock.calls.join("")).not.toContain("underscore");
+      });
+
+      it("does not warn about wrong version packages that are excluded", async () => {
+        await run({
+          rootDirectory: fixtures.missingAndWrongPackage,
+          exclude: /names/
+        });
+
+        expect(warnSpy.mock.calls.join("")).toContain("underscore");
+        expect(warnSpy.mock.calls.join("")).not.toContain("classnames");
+      });
+    });
+  });
 });
