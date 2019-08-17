@@ -11,6 +11,7 @@ exports[`plugin a project with a missing package and wrong package lists missing
 exports[`plugin a project with a missing package and wrong package lists missing packages, wrong versions and a prompt to install 2`] = `
 "Missing packages:
   - underscore
+  - object-assign
 Wrong packages:
   - classnames (expected ^2.2.6 but got 3.2.6)"
 `;
