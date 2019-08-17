@@ -14,6 +14,12 @@ export interface PluginOptions {
    * plugin is being run in a different directory.
    */
   rootDirectory?: string;
+
+  /**
+   * Ignore any missing or wrong version packages from this plugins warnings.
+   * This argument
+   */
+  exclude?: RegExp;
 }
 
 interface Package {
@@ -24,8 +30,20 @@ interface Package {
   };
 }
 
+const shouldPreventWarning = (
+  pkg: string,
+  exclude: RegExp | undefined
+): boolean => {
+  if (!exclude) {
+    return false;
+  }
+
+  return exclude.test(pkg);
+};
+
 const runCheckVerifyTree = async ({
-  rootDirectory
+  rootDirectory,
+  exclude
 }: PluginOptions): Promise<{
   packagesNotInstalled: Package[];
   packagesWrongVersion: Package[];
@@ -44,18 +62,24 @@ const runCheckVerifyTree = async ({
       const packageNotInstalled = err.match(PACKAGE_NOT_INSTALLED);
       if (packageNotInstalled) {
         const name = packageNotInstalled[1];
+
+        if (shouldPreventWarning(name, exclude)) return;
+
         packagesNotInstalled.push({ name });
       }
 
       const packageWrongVersion = err.match(PACKAGE_WRONG_VERSION);
       if (packageWrongVersion) {
         const [, name, expected, got] = packageWrongVersion;
+
+        if (shouldPreventWarning(name, exclude)) return;
+
         packagesWrongVersion.push({ name, version: { expected, got } });
       }
     });
 
     yarnCheckVerifyTree.on("exit", () => {
-      resolve({ packagesNotInstalled, packagesWrongVersion })
+      resolve({ packagesNotInstalled, packagesWrongVersion });
     });
   });
 };
