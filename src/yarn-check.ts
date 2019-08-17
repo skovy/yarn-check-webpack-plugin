@@ -53,7 +53,8 @@ const runCheckVerifyTree = async ({
     const packagesWrongVersion: Package[] = [];
 
     const yarnCheckVerifyTree = spawn(`yarn`, [`check`, `--verify-tree`], {
-      cwd: rootDirectory
+      cwd: rootDirectory,
+      env: process.env
     });
 
     yarnCheckVerifyTree.stderr.on("data", data => {
