@@ -7,6 +7,7 @@ describe("yarn-check", () => {
   let successSpy: jest.SpyInstance;
   let warnSpy: jest.SpyInstance;
   let errorSpy: jest.SpyInstance;
+  const ORIGINAL_NODE_ENV = process.env.NODE_ENV;
 
   beforeEach(() => {
     successSpy = jest.spyOn(log, "success").mockImplementation();
@@ -61,6 +62,42 @@ describe("yarn-check", () => {
         expect(warnSpy.mock.calls.join("")).toContain("underscore");
         expect(warnSpy.mock.calls.join("")).not.toContain("classnames");
       });
+    });
+  });
+
+  describe("running in a development environment", () => {
+    beforeEach(() => {
+      process.env.NODE_ENV = "development";
+    });
+
+    afterEach(() => {
+      process.env.NODE_ENV = ORIGINAL_NODE_ENV;
+    });
+
+    it("includes development dependencies", async () => {
+      await run({
+        rootDirectory: fixtures.missingAndWrongPackage
+      });
+
+      expect(warnSpy.mock.calls.join("")).toContain("object-assign");
+    });
+  });
+
+  describe("running in a production environment", () => {
+    beforeEach(() => {
+      process.env.NODE_ENV = "production";
+    });
+
+    afterEach(() => {
+      process.env.NODE_ENV = ORIGINAL_NODE_ENV;
+    });
+
+    it("includes development dependencies", async () => {
+      await run({
+        rootDirectory: fixtures.missingAndWrongPackage
+      });
+
+      expect(warnSpy.mock.calls.join("")).not.toContain("object-assign");
     });
   });
 });
