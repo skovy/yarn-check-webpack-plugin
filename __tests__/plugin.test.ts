@@ -52,4 +52,21 @@ describe("plugin", () => {
       expect(errorSpy.mock.calls.join("\n")).toMatchSnapshot();
     });
   });
+
+  describe("forceKill", () => {
+    it("rejects the callback when enabled", async () => {
+      const config = {
+        plugins: [
+          new YarnCheck({
+            rootDirectory: fixtures.missingAndWrongPackage,
+            forceKill: true
+          })
+        ]
+      };
+
+      await expect(compile(config)).rejects.toEqual(
+        "Restart webpack after resolving the above issues."
+      );
+    });
+  });
 });

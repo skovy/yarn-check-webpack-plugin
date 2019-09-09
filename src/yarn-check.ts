@@ -9,17 +9,28 @@ const PACKAGE_WRONG_VERSION = /\"(.*)\" is wrong version: expected \"(.*)\", got
 export interface PluginOptions {
   /**
    * The root directory to run the commands. This should be the directory that
-   * contains `package.json`, `yarn.lock` and `node_modules`. By default, it will
-   * run in the current directory. This option only needs to be set if this
-   * plugin is being run in a different directory.
+   * contains `package.json`, `yarn.lock` and `node_modules`. This option only
+   * needs to be set if this plugin is being run in a different directory.
+   *
+   * @default cwd
    */
   rootDirectory?: string;
 
   /**
    * Ignore any missing or wrong version packages from this plugins warnings.
    * This argument
+   *
+   * @default undefined
    */
   exclude?: RegExp;
+
+  /**
+   * Force the webpack process to exit if there is an error. This is desirable
+   * if you want to ensure the proper packages are installed before continuing.
+   *
+   * @default false
+   */
+  forceKill?: boolean;
 }
 
 interface Package {
@@ -88,11 +99,11 @@ const runCheckVerifyTree = async ({
 /**
  * Run the yarn check command, parse any missing or incorrect packages, log
  * the issues and any other helpful prompts.
- * 
+ *
  * @param options an object to configure how the yarn check is ran
- * 
- * @returns a promise that resolves to a boolean. `true` if the method ran 
- * successfully with no issues. `false` if there was one more missing or 
+ *
+ * @returns a promise that resolves to a boolean. `true` if the method ran
+ * successfully with no issues. `false` if there was one more missing or
  * incorrect packages.
  */
 export const run = async (options: PluginOptions = {}): Promise<boolean> => {

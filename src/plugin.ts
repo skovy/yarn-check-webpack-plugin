@@ -16,10 +16,15 @@ class YarnCheck implements webpack.Plugin {
 
   private perform = async (
     _compiler: webpack.Compiler,
-    callback: () => void
+    callback: (error?: string) => void
   ) => {
-    await run(this.options);
-    callback();
+    const successful = await run(this.options);
+
+    if (!successful && this.options.forceKill) {
+      callback("Restart webpack after resolving the above issues.");
+    } else {
+      callback();
+    }
   };
 }
 
