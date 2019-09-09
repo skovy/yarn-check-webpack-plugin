@@ -62,7 +62,11 @@ All configuration is optional. Pass a configuration object when initializing to 
 For example:
 
 ```typescript
-new YarnCheck({ rootDirectory: "./another/directory", exclude: /underscore/ });
+new YarnCheck({
+  rootDirectory: "./another/directory",
+  exclude: /underscore/,
+  forceKill: true
+});
 ```
 
 ### `rootDirectory`
@@ -76,3 +80,9 @@ new YarnCheck({ rootDirectory: "./another/directory", exclude: /underscore/ });
 **Type**: RegExp
 
 **Description**: Ignore warnings for any missing or wrong version packages that match this regex expression.
+
+### `forceKill`
+
+**Type**: Boolean
+
+**Description**: Force the webpack process to exit if there is an error. This is desirable if you want to ensure the proper packages are installed before continuing.
