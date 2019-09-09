@@ -22,9 +22,10 @@ describe("yarn-check", () => {
   });
 
   describe("a project that is up to date", () => {
-    it("lists missing packages, wrong versions and a prompt to install", async () => {
-      await run({ rootDirectory: fixtures.upToDateProject });
+    it("prints a success message", async () => {
+      const successful = await run({ rootDirectory: fixtures.upToDateProject });
 
+      expect(successful).toBe(true);
       expect(successSpy.mock.calls.join("\n")).toMatchSnapshot();
       expect(warnSpy.mock.calls.join("\n")).toMatchSnapshot();
       expect(errorSpy.mock.calls.join("\n")).toMatchSnapshot();
@@ -33,8 +34,11 @@ describe("yarn-check", () => {
 
   describe("a project with a missing package and wrong package", () => {
     it("lists missing packages, wrong versions and a prompt to install", async () => {
-      await run({ rootDirectory: fixtures.missingAndWrongPackage });
+      const successful = await run({
+        rootDirectory: fixtures.missingAndWrongPackage
+      });
 
+      expect(successful).toBe(false);
       expect(successSpy.mock.calls.join("\n")).toMatchSnapshot();
       expect(warnSpy.mock.calls.join("\n")).toMatchSnapshot();
       expect(errorSpy.mock.calls.join("\n")).toMatchSnapshot();
@@ -44,21 +48,23 @@ describe("yarn-check", () => {
   describe("options", () => {
     describe("exclude", () => {
       it("does not warn about missing packages that are excluded", async () => {
-        await run({
+        const successful = await run({
           rootDirectory: fixtures.missingAndWrongPackage,
           exclude: /under/
         });
 
+        expect(successful).toBe(false);
         expect(warnSpy.mock.calls.join("")).toContain("classnames");
         expect(warnSpy.mock.calls.join("")).not.toContain("underscore");
       });
 
       it("does not warn about wrong version packages that are excluded", async () => {
-        await run({
+        const successful = await run({
           rootDirectory: fixtures.missingAndWrongPackage,
           exclude: /names/
         });
 
+        expect(successful).toBe(false);
         expect(warnSpy.mock.calls.join("")).toContain("underscore");
         expect(warnSpy.mock.calls.join("")).not.toContain("classnames");
       });

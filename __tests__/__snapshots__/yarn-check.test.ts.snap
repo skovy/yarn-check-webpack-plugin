@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`yarn-check a project that is up to date lists missing packages, wrong versions and a prompt to install 1`] = `"All packages installed and up to date."`;
+exports[`yarn-check a project that is up to date prints a success message 1`] = `"All packages installed and up to date."`;
 
-exports[`yarn-check a project that is up to date lists missing packages, wrong versions and a prompt to install 2`] = `""`;
+exports[`yarn-check a project that is up to date prints a success message 2`] = `""`;
 
-exports[`yarn-check a project that is up to date lists missing packages, wrong versions and a prompt to install 3`] = `""`;
+exports[`yarn-check a project that is up to date prints a success message 3`] = `""`;
 
 exports[`yarn-check a project with a missing package and wrong package lists missing packages, wrong versions and a prompt to install 1`] = `""`;
 

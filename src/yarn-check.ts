@@ -85,7 +85,17 @@ const runCheckVerifyTree = async ({
   });
 };
 
-export const run = async (options: PluginOptions = {}) => {
+/**
+ * Run the yarn check command, parse any missing or incorrect packages, log
+ * the issues and any other helpful prompts.
+ * 
+ * @param options an object to configure how the yarn check is ran
+ * 
+ * @returns a promise that resolves to a boolean. `true` if the method ran 
+ * successfully with no issues. `false` if there was one more missing or 
+ * incorrect packages.
+ */
+export const run = async (options: PluginOptions = {}): Promise<boolean> => {
   const {
     packagesNotInstalled,
     packagesWrongVersion
@@ -93,7 +103,7 @@ export const run = async (options: PluginOptions = {}) => {
 
   if (!packagesNotInstalled.length && !packagesWrongVersion.length) {
     log.success(`All packages installed and up to date.`);
-    return;
+    return true;
   }
 
   if (packagesNotInstalled.length) {
@@ -115,4 +125,6 @@ export const run = async (options: PluginOptions = {}) => {
   log.error(
     `Please run ${chalk.bold(`\`yarn install --check-files\``)} to update.`
   );
+
+  return false;
 };
