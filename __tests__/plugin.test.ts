@@ -22,7 +22,7 @@ describe("plugin", () => {
   });
 
   describe("a project that is up to date", () => {
-    it("lists missing packages, wrong versions and a prompt to install", async () => {
+    it("prints a success message", async () => {
       await compile({
         plugins: [
           new YarnCheck({
