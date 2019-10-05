@@ -7,6 +7,10 @@ When working in a large codebase it's likely someone else will add a new package
 
 The intent of this plugin is to be run in development with webpack so as you checkout different branches or recent changes in version control this plugin can remind you when there are missing or outdated packages.
 
+For example, say a webpack watch process is running and started on the `master` branch. In the process of working or reviewing code the branch `add-underscore` is checked out (`git checkout add-underscore`). In this case, the branch name gives it away but sometimes it's not immediately obvious that a package was added or changed. This plugin will list the differences between the installed versus expected packages. In this specific example, the `forceKill` option is enabled so the webpack process also exits.
+
+![Demo of yarn-check-webpack-plugin](./docs/yarn-check-webpack-plugin.gif)
+
 ## Getting Started
 
 Install the package:
