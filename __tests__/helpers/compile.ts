@@ -19,7 +19,7 @@ export const compile = ({ plugins = [] }: Partial<Configuration> = {}) => {
   };
 
   const compiler = webpack(config);
-
+  // @ts-expect-error
   compiler.outputFileSystem = new MemoryFS();
 
   return new Promise((resolve, reject) =>
