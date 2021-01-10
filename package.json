@@ -31,7 +31,6 @@
     "@types/jest": "^26.0.20",
     "@types/memory-fs": "^0.3.2",
     "@types/node": "^14.14.20",
-    "@types/webpack": "^4.41.25",
     "builtin-modules": "^3.2.0",
     "husky": "^4.3.7",
     "jest": "^26.6.3",
