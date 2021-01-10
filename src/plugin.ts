@@ -2,7 +2,7 @@ import * as webpack from "webpack";
 
 import { run, PluginOptions } from "./yarn-check";
 
-class YarnCheck implements webpack.Plugin {
+class YarnCheck implements webpack.WebpackPluginInstance {
   private options: PluginOptions;
 
   constructor(options: PluginOptions = {}) {
@@ -16,7 +16,7 @@ class YarnCheck implements webpack.Plugin {
 
   private perform = async (
     _compiler: webpack.Compiler,
-    callback: (error?: string) => void
+    callback: (error?: any) => void
   ) => {
     const successful = await run(this.options);
 
