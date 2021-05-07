@@ -4,6 +4,6 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
-    "underscore": "^1.9.1"
+    "underscore": "^1.12.1"
   }
 }
